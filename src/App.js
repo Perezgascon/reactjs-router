@@ -9,6 +9,8 @@ import Item from './routes/Item';
 import ItemDefault from './routes/ItemDefault';
 import NoMatch from './routes/NoMatch';
 
+
+
 import './App.css';
 
 function App() {
@@ -18,6 +20,14 @@ function App() {
   const handlerDeleteProduct = (id) => {
     const newList = list.filter(item => item.id!== id);
     setList(newList);
+  }
+
+  const handlerAddProduct = (newProduct) => {
+
+    const newList = [...list, newProduct];
+    setList(newList);
+
+
   }
 
   return (
@@ -30,7 +40,7 @@ function App() {
               <Route index element={<ItemDefault />} />
               <Route path=':id' element={<Item list={list} handlerDelete={handlerDeleteProduct} />} />
             </Route>
-            <Route path='/add' element={<Add />} />
+            <Route path='/add' element={<Add handlerAddProduct={handlerAddProduct}/>} />
 
           </Route>
 
