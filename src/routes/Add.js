@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './Add.module.css'
 import { v4 as uuid } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,6 +11,7 @@ export default function Add({ handlerAddProduct }) {
   const [productQuantity, setProductQuantity] = useState('')
   const [productPrice, setProductPrice] = useState('');
   const [productDiscount, setProductDiscount] = useState('');
+  const navigate = useNavigate();
 
   const handleAddClick = () => {
     handlerAddProduct({
@@ -24,6 +26,8 @@ export default function Add({ handlerAddProduct }) {
     setProductQuantity('');
     setProductPrice('');
     setProductDiscount('');
+
+    navigate('/view');
   };
 
   return (
